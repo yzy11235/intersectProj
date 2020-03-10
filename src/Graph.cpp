@@ -6,7 +6,6 @@
 Point::Point(float xNew, float yNew) {
 	x = xNew;
 	y = yNew;
-	hash = (int)x << 3 + (int)y << 2;
 }
 
 bool Point::equal(Point p) {
@@ -27,8 +26,12 @@ Line::Line(int x1, int y1, int x2, int y2) {
 	A = (float) y2 - y1;
 	B = (float) x1 - x2;
 	C = (float) x2 * y1 - x1 * y2;
-	slope = (float) (y1 - y2)/(x1 - x2);
-	hash = 31 * x1 + 15 * y1 + 7 * x2 + 3 * y2;
+	if (x1 - x2 == 0) {
+		slope = FLT_MAX;
+	}
+	else {
+		slope = (float)(y1 - y2) / (x1 - x2);
+	}
 }
 
 float Line::getslope() {
@@ -48,7 +51,7 @@ float Line::getC() {
 }
 
 bool Line::isParallel(Line l) {
-	return slope == l.getslope();
+	return EQFLOAT(slope, l.getslope());
 }
 
 bool Line::equal(Line l) {
@@ -67,7 +70,7 @@ Point Line::getIntersect(Line l) {
 
 bool Line::containsPoint(Point p) {
 	float res = A * p.getX() + B * p.getY() + C;
-	return res == 0;
+	return EQFLOAT(res, 0);
 }
 
 

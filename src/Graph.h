@@ -14,7 +14,6 @@ using namespace std;
 class Point
 {
 public:
-	int hash;
 	float x;
 	float y;
 
@@ -40,7 +39,6 @@ private:
 class Line
 {
 public:
-	int hash;
 
 	Line(int x1, int y1, int x2, int y2);
 	float getA();
@@ -51,9 +49,6 @@ public:
 	bool containsPoint(Point p);
 	Point getIntersect(Line l);	
 	bool equal(Line l);
-	bool operator<(const Line& l) const {
-		return hash < l.hash;
-	}
 
 private:
 	// line: Ax + By + C = 0;
