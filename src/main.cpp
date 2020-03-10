@@ -21,10 +21,10 @@ int main(int argc, char* argv[]) {
 		else if (strcmp(argv[i], "-o") == 0)
 			output = ofstream(argv[i + 1]);
 	} 
-	/*
-	input.open("input1.txt", ifstream::in);
-	output.open("output.txt", ifstream::out);
-	*/
+	
+	//input.open("input1.txt", ifstream::in);
+	//output.open("output.txt", ifstream::out);
+	
 	int n;
 	int x1, y1, x2, y2;
 	char c;

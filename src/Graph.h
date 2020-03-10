@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cmath>
 
-#define EQS (1e-6)
+#define EQS (1e-8)
 #define EQFLOAT(a,b) (fabs((a) - (b)) < EQS)
 
 using namespace std;
@@ -15,18 +15,25 @@ class Point
 {
 public:
 	int hash;
+	float x;
+	float y;
 
 	Point(float xNew, float yNew);
 	bool equal(Point p);
 	float getX();
 	float getY();
 	bool operator<(const Point& p) const {
-		return hash < p.hash;
+		if (!EQFLOAT(x, p.x))
+			return x < p.x;
+		else
+			return y < p.y;
+	}
+	bool operator==(const Point& p) const {
+		return EQFLOAT(x, p.x) && EQFLOAT(y, p.y);
 	}
 
 private:
-	float x;
-	float y;
+
 };
 
 
