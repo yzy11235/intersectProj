@@ -3,44 +3,25 @@
 #include "stdafx.h"
 #include <set>
 #include <iostream>
+#include <cmath>
+
+#define EQS (1e-6)
+#define EQFLOAT(a,b) (fabs((a) - (b)) < EQS)
 
 using namespace std;
-
-class Radio
-{
-public:
-	Radio();
-	Radio(int numNew, int denNew);
-	// radio = num / den;
-
-	int getNum();
-	int getDen();
-	Radio add(Radio r);
-	Radio sub(Radio r);
-	Radio mul(Radio r);
-	Radio div(Radio r);
-	bool equal(Radio r);
-
-private:
-	int num;
-	int den;
-
-	int gcd();
-	void contract();
-};
 
 
 class Point
 {
 public:
-	Point(Radio xNew, Radio yNew);
+	Point(float xNew, float yNew);
 	bool equal(Point p);
-	Radio getX();
-	Radio getY();
+	float getX();
+	float getY();
 
 private:
-	Radio x;
-	Radio y;
+	float x;
+	float y;
 };
 
 
@@ -48,10 +29,10 @@ class Line
 {
 public:
 	Line(int x1, int y1, int x2, int y2);
-	Radio getA();
-	Radio getB();
-	Radio getC();
-	Radio getslope();
+	float getA();
+	float getB();
+	float getC();
+	float getslope();
 	bool isParallel(Line l);
 	bool containsPoint(Point p);
 	Point getIntersect(Line l);	
@@ -62,10 +43,10 @@ public:
 
 private:
 	// line: Ax + By + C = 0;
-	Radio A;
-	Radio B;
-	Radio C;
-	Radio slope;
+	float A;
+    float B;
+	float C;
+	float slope;
 	int hash;
 
 };
