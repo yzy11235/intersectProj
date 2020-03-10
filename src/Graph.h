@@ -1,12 +1,34 @@
 #pragma once
-#ifndef _GRAPH_H
-#define _GRAPH_H
 
 #include "stdafx.h"
-#include "Radio.h"
 #include <set>
+#include <iostream>
 
 using namespace std;
+
+class Radio
+{
+public:
+	Radio();
+	Radio(int numNew, int denNew);
+	// radio = num / den;
+
+	int getNum();
+	int getDen();
+	Radio add(Radio r);
+	Radio sub(Radio r);
+	Radio mul(Radio r);
+	Radio div(Radio r);
+	bool equal(Radio r);
+
+private:
+	int num;
+	int den;
+
+	int gcd();
+	void contract();
+};
+
 
 class Point
 {
@@ -47,7 +69,3 @@ private:
 	int hash;
 
 };
-
-
-
-#endif // !_GRAPH_H
