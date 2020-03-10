@@ -2,7 +2,7 @@
 #ifndef _GRAPH_H
 #define _GRAPH_H
 
-#include "def.h"
+#include "stdafx.h"
 #include "Radio.h"
 #include <set>
 
@@ -25,8 +25,6 @@ private:
 class Line
 {
 public:
-	int hash;
-
 	Line(int x1, int y1, int x2, int y2);
 	Radio getA();
 	Radio getB();
@@ -46,6 +44,7 @@ private:
 	Radio B;
 	Radio C;
 	Radio slope;
+	int hash;
 
 };
 

@@ -2,6 +2,7 @@
 #ifndef _RADIO_H
 #define _RADIO_H
 
+#include "stdafx.h"
 #include "def.h"
 
 
@@ -19,7 +20,6 @@ public:
 	Radio mul(Radio r);
 	Radio div(Radio r);
 	bool equal(Radio r);
-	bool isLess(Radio r);
 
 private:
 	int num;

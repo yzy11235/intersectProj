@@ -40,13 +40,16 @@ int Radio::getDen() {
 }
 
 bool Radio::equal(Radio r) {
-	return num == r.getNum() && den == r.getDen();
+	return absInt(num) == absInt(r.getNum()) 
+		&& absInt(den) == absInt(r.getDen())
+		&& isRadioPos(num, den) == isRadioPos(r.getNum(), r.getDen());
 }
 
 int Radio::gcd() {
 	// x >= y >= z
-	int x = max(num, den);
-	int y = min(num, den);
+
+	int x = max(absInt(num), absInt(den));
+	int y = min(absInt(num), absInt(den));
 	int z = y;
 	while (x % y != 0) {
 		z = x % y;
