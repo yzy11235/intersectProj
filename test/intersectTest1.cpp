@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../Intersect/Graph.h"
-#include "../Intersect/Radio.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -27,8 +26,8 @@ namespace intersectTest1
 			Assert::AreEqual(zero.equal(Radio(0, 100)), true);
 			// minus
 			Radio d(100, -100);
-			Assert::AreEqual(c.getNum(), 1);
-			Assert::AreEqual(c.getDen(), -1);
+			Assert::AreEqual(d.getNum(), 1);
+			Assert::AreEqual(d.getDen(), -1);
 			Radio e(-600, 600);
 			Assert::AreEqual(d.equal(e), true);
 			Assert::AreNotEqual(c.equal(e), true);
@@ -76,9 +75,9 @@ namespace intersectTest1
 			Line l3(0, -45, 45, 0);
 			Line lr(1, 0, 5, 0);
 			Line bt(1, 1, 1, 10);
-			Assert::AreEqual(l2.getA().equal(Radio(2, 1)), true);
-			Assert::AreEqual(l2.getB().equal(Radio(1, 1)), true);
-			Assert::AreEqual(l2.getC().equal(Radio(-2, 1)), true);
+			Assert::AreEqual(l2.getA().equal(Radio(-2, 1)), true);
+			Assert::AreEqual(l2.getB().equal(Radio(-1, 1)), true);
+			Assert::AreEqual(l2.getC().equal(Radio(2, 1)), true);
 			Assert::AreEqual(l2.getslope().equal(Radio(-2, 1)), true);
 			// parallel
 			Assert::AreEqual(l1.isParallel(l3), true);
@@ -92,7 +91,8 @@ namespace intersectTest1
 			// get intersect
 			Point inter12(Radio(2, 3), Radio(2, 3));
 			Assert::AreEqual(l1.getIntersect(l2).equal(inter12), true);
-			Point inter3lr(Radio(45, 0), Radio(0, 0));
+			Point inter3lr(Radio(45, 1), Radio(0, 1));
+			Point inter3tb(Radio(1, 1), Radio(-44, 1));
 			Assert::AreEqual(l3.getIntersect(lr).equal(inter3lr), true);
 			// equal
 			Assert::AreEqual(l1.equal(l2), false);

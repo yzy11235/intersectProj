@@ -47,8 +47,13 @@ bool Radio::equal(Radio r) {
 }
 
 int Radio::gcd() {
+	if (num == 0 || den == 0) {
+		return absInt(max(absInt(num), absInt(den)));
+	}
+	else if (absInt(num) == 1 || absInt(den) == 1) {
+		return 1;
+	}
 	// x >= y >= z
-
 	int x = max(absInt(num), absInt(den));
 	int y = min(absInt(num), absInt(den));
 	int z = y;
@@ -85,6 +90,8 @@ Radio Point::getX() {
 Radio Point::getY() {
 	return y;
 }
+
+
 
 Line::Line(int x1, int y1, int x2, int y2) {
 	A = Radio(y2 - y1, 1);

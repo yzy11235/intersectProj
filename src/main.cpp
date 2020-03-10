@@ -45,19 +45,17 @@ int main(int argc, char* argv[]) {
 				it++;
 			}
 			
-			vector<Line>::iterator iter = lineList.begin();
-			while (iter != lineList.end()) {
+			for (auto iter = lineList.begin(); iter != lineList.end(); iter++) {
 				Line lit = (Line)* iter;
 				if (lit.isParallel(l)	// parallel
 					|| delLineSet.find(lit) != delLineSet.end()) {	// have intersected
 					continue;
-				} 
+				}
 				Point pInter = l.getIntersect(lit);
 				set<Line> interLines;
 				interLines.insert(l);
 				interLines.insert(lit);
 				interList.push_back(pair<Point, set<Line>>(pInter, interLines));
-				iter++;
 			}
 			lineList.push_back(l);
 		}
@@ -67,10 +65,8 @@ int main(int argc, char* argv[]) {
 		else {
 			cout << "ERROR INPUT!" << endl;
 		}
-
-		output << interList.size();
-		cout << interList.size() << endl;
-		return 0;
-
 	}
+	output << interList.size();
+	cout << interList.size() << endl;
+	return 0;
 }
