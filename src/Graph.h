@@ -14,10 +14,15 @@ using namespace std;
 class Point
 {
 public:
+	int hash;
+
 	Point(float xNew, float yNew);
 	bool equal(Point p);
 	float getX();
 	float getY();
+	bool operator<(const Point& p) const {
+		return hash < p.hash;
+	}
 
 private:
 	float x;
@@ -28,6 +33,8 @@ private:
 class Line
 {
 public:
+	int hash;
+
 	Line(int x1, int y1, int x2, int y2);
 	float getA();
 	float getB();
@@ -47,6 +54,5 @@ private:
     float B;
 	float C;
 	float slope;
-	int hash;
 
 };

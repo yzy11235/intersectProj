@@ -6,6 +6,7 @@
 Point::Point(float xNew, float yNew) {
 	x = xNew;
 	y = yNew;
+	hash = (int)x << 3 + (int)y << 2;
 }
 
 bool Point::equal(Point p) {
